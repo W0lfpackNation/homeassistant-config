@@ -31,6 +31,7 @@ home-assistant.*
 known_devices.yaml
 entity_registry.yaml
 secrets.yaml
+.secrets.yaml.swp
 google_calendars.yaml
 components
 deps
@@ -46,3 +47,4 @@ dlib_unknown_faces
 .cloud
 *.pickle
 .pc-session
+.homekit*

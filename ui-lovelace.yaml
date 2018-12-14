@@ -1,0 +1,96 @@
+resources:
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=1
+    type: js
+  - url: /local/custom_ui/thermostat-card.js?v=1.3
+    type: module 
+title: MC Home
+views:
+    - icon: mdi:home-assistant
+      id: home
+      title: Home
+    - icon: mdi:weather-cloudy
+      id: weather
+      title: Weather
+      cards:
+      - id: dark_sky_animated_card
+        type: custom:dark-sky-weather-card
+        entity_sun: sun.sun
+        entity_daily_summary: sensor.dark_sky_daily_summary
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_humidity: sensor.dark_sky_humidity
+        entity_pressure: sensor.dark_sky_pressure
+        entity_temperature: sensor.dark_sky_temperature
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.dark_sky_wind_bearing
+        entity_wind_speed: sensor.dark_sky_wind_speed
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_1
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_2
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_3
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_4
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_5
+        entity_forecast_icon_1: sensor.dark_sky_icon_1
+        entity_forecast_icon_2: sensor.dark_sky_icon_2
+        entity_forecast_icon_3: sensor.dark_sky_icon_3
+        entity_forecast_icon_4: sensor.dark_sky_icon_4
+        entity_forecast_icon_5: sensor.dark_sky_icon_5  
+      - id: thermostats
+        type: vertical-stack
+        cards:
+          - type: thermostat
+            entity: climate.downstairs
+          - type: thermostat
+            entity: climate.upstairs
+#      - id: 4a4481c1b7934014b4e550319e223f7c
+#        type: vertical-stack
+#        cards:
+#          - type: glance
+#            title: Downstairs Thermostat
+#            entities:
+#              - entity: sensor.downstairsthermoper
+#                name: Operation
+#              - entity: sensor.downstairs_thermostat_humidity
+#                name: Humidity
+#              - entity: sensor.living_room_temperature
+#                name: Temperature
+#              - entity: sensor.downstairs_hvac_runtime
+#                name: Runtime
+#              - entity: switch.downstairs_away
+#                tap_action:
+#                  action: toggle
+#                name: Away
+      - id: c066453905924966bacb3c87af9ce8d3
+        type: entities
+        title: Weather
+        entities:
+          - sensor.dark_sky_summary
+          - sensor.dark_sky_cloud_coverage
+          - sensor.pollen_level
+          - sensor.cold_flu_risk
+          - sensor.dark_sky_hourly_summary
+          - sensor.dark_sky_daily_summary
+      - id: fd2afd8bbf3f4b58aef8dbd403549fe3
+        type: picture-entity
+        entity: camera.meteogram
+        show_name: false
+        show_state: false
+      - id: 5e501cc7179141188b9f7f376a89d855
+        type: iframe
+        aspect_ratio: 100%
+        url: https://embed.windy.com/embed2.html?rain,35.868,-78.856,7       
+    - icon: mdi:cctv
+      id: cameras
+      title: Cameras
+    - icon: mdi:play-circle-outline
+      id: media
+      title: Media
+    - icon: mdi:settings
+      id: settings
+      title: Settings
+    - icon: mdi:test-tube
+      id: test
+      title: Testing

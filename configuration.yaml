@@ -1,0 +1,115 @@
+homeassistant:
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+    #- type: legacy_api_password
+    
+    
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: 114.0
+  
+  # Name of the location where Home Assistant is running
+  name: Home
+  
+  temperature_unit: F
+  time_zone: America/New_York
+  unit_system: imperial
+  # Customization file
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret ha_api_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  login_attempts_threshold: 3
+  trusted_networks:
+    - 10.0.0.0/24
+
+# Enables configuration UI
+config:
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+sensor: !include sensors.yaml
+
+# Text to speech
+tts:
+    #platform: google
+    #cache: true
+    #cache_dir: /home/homeassistant/.homeassistant/tts
+    #language: en
+    #time_memory: 300
+    platform: voicerss
+    api_key: !secret tts_voicerss_api_key
+    language: 'en-us'
+    codec: mp3
+    format: '44khz_16bit_stereo'
+
+#media_player:
+#    platform: spotify
+#    client_id: !secret spotify_client_id
+#    client_secret: !secret spotify_client_secret
+
+# Enables support for IOS Devices
+#ios:
+
+#homekit:
+#    pincode: !secret homekit_pin
+
+# Cloud
+cloud:
+
+#logger:
+#  default: debug
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_secret
+    latitude: !secret latitude_home
+    longitude: !secret longitude_home
+    units: us
+    name: Open Sky
+    mode: daily
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  
+camera:
+  - platform: generic
+    still_image_url: https://www.yr.no/place/United_States/North_Carolina/Country_Inn_%C2%A40026_Suites_By_Carlson,_Raleigh-Durham_Airport,_NC/meteogram.png
+    name: Meteogram
+
+group: !include groups.yaml
+automation: !include automations.yaml
+frontend: !include frontend.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml

@@ -1,0 +1,14 @@
+- id: '1543545832957'
+  alias: Test Sonos Script
+  trigger:
+  - entity_id: light.hue_color_downlight_1
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Test of the TTS system.
+      sonos_id: living_room
+      volume: 0.5
+    service: script.sonos_say
