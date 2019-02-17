@@ -1,0 +1,10 @@
+- platform: mqtt
+  name: "Sonoff SV Garage"
+  state_topic: "cmnd/garagestate/POWER2"
+  command_topic: "cmnd/sonoffsv01/POWER"
+  payload_open: "ON"
+  payload_close: "ON"
+  payload_stop: "ON"
+  state_open: "ON"
+  state_closed: "OFF"
+  optimistic: false
