@@ -1,0 +1,11 @@
+  - platform: generic
+    still_image_url: "https://www.yr.no/place/United_States/North_Carolina/Country_Inn_%C2%A40026_Suites_By_Carlson,_Raleigh-Durham_Airport,_NC/meteogram.png"
+    name: Meteogram
+  - platform: local_file
+    name: Grafana Temperature Downstairs
+    file_path: /home/homeassistant/.homeassistant/downloads/grafana/down_temp.png
+  - platform: local_file
+    name: Grafana Temperature Upstairs
+    file_path: /home/homeassistant/.homeassistant/downloads/grafana/up_temp.png
+
+
